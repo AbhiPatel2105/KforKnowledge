@@ -1,0 +1,165 @@
+{% extends 'layout.html'%}
+{% block content %}
+<main>
+  <div class="container-fluid">
+    <div class="row mainbox">
+      <div class="col-5">
+        <div class="developers-box">
+          <div class="dev-category">
+            <button type="button" name="button" onclick="showDevInfo(this)" id="het" class="active">HP</button>
+            <button type="button" name="button" onclick="showDevInfo(this)" id="zeel">ZP</button>
+            <button type="button" name="button" onclick="showDevInfo(this)" id="arpit">AP</button>
+            <button type="button" name="button" onclick="showDevInfo(this)" id="abhi">Ab</button>
+          </div>
+          <div class="category-het showCategory">
+            <div class="dev-desc">
+              I am Het Patel. A normal and somewhat curious student.
+              I will be student for my entire life becuase I always likes to learn new things.<br>
+              Wanna contact me directly? catch me up at below mentioned social media.
+            </div>
+            <div class="socials">
+              <div class="social">
+                <a href="https://www.instagram.com/het_patel_285" target="_blank">
+                  <button type="button" name="button">Instagram</button>
+                </a>
+              </div>
+              <div class="social">
+                <a href="https://www.facebook.com/patel.het.106" target="_blank">
+                  <button type="button" name="button">Facebook</button>
+                </a>
+              </div>
+              <div class="social">
+                <a href="https://www.twitter.com/PhoenixCrea2ion" target="_blank">
+                  <button type="button" name="button">Twitter</button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="category-zeel hideCategory">
+            I am Zeel Patel and I am ______ and ________ type of person.
+            I want to __________________________________________________
+            Wanna contact me directly? catch me up at below mentioned social media.
+            <div class="socials">
+              <div class="social">
+                <a href="https://www.instagram.com/het_patel_285">
+                  <button type="button" name="button">Instagram</button>
+                </a>
+              </div>
+              <div class="social">
+                <a href="https://www.instagram.com/het_patel_285">
+                  <button type="button" name="button">Instagram</button>
+                </a>
+              </div>
+              <div class="social">
+                <a href="https://www.instagram.com/het_patel_285">
+                  <button type="button" name="button">Instagram</button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="category-arpit hideCategory">
+            I am Arpit Patel and I am ______ and ________ type of person.
+            I want to __________________________________________________
+            Wanna contact me directly? catch me up at below mentioned social media.
+            <div class="socials">
+              <div class="social">
+                <a href="https://www.instagram.com/het_patel_285">
+                  <button type="button" name="button">Instagram</button>
+                </a>
+              </div>
+              <div class="social">
+                <a href="https://www.instagram.com/het_patel_285">
+                  <button type="button" name="button">Instagram</button>
+                </a>
+              </div>
+              <div class="social">
+                <a href="https://www.instagram.com/het_patel_285">
+                  <button type="button" name="button">Instagram</button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="category-abhi hideCategory">
+            I am Abhisek Patel and I am ______ and ________ type of person.
+            I want to __________________________________________________
+            Wanna contact me directly? catch me up at below mentioned social media.
+            <div class="socials">
+              <div class="social">
+                <a href="https://www.instagram.com/het_patel_285">
+                  <button type="button" name="button">Instagram</button>
+                </a>
+              </div>
+              <div class="social">
+                <a href="https://www.instagram.com/het_patel_285">
+                  <button type="button" name="button">Instagram</button>
+                </a>
+              </div>
+              <div class="social">
+                <a href="https://www.instagram.com/het_patel_285">
+                  <button type="button" name="button">Instagram</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-7">
+        <form class="form" method="post" action="/contact">
+          {% csrf_token %}
+          <div class="formbox">
+            <div class="confirm-message">{{msg}}</div>
+            <div class="name-container">
+              <div class="first-name">
+                <label for="first-name">First Name: </label>
+                <input type="text" name="first-name" id="first-name" placeholder="First Name" class="form-control" required>
+              </div>
+              <div class="last-name">
+                <label for="last-name">Last Name:</label>
+                <input type="text" name="last-name" id="last-name" placeholder="Last Name" class="form-control" required>
+              </div>
+            </div>
+            <div class="email-container">
+              <label for="email">Email ID: </label>
+              <input type="email" name="email" id="email" placeholder="abc123@xyz.com" class="form-control" required>
+            </div>
+            <div class="message-container">
+              <label for="message">Feedback: </label>
+              <textarea name="message" id="message" placeholder="Give your valueable feedback" class="form-control"></textarea>
+            </div>
+            <div class="submit-container">
+              <button type="submit" name="submit" class="btn btn-outline-danger submit">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+<link rel="stylesheet" href="../static/contact/css/contact.css">
+<script type="text/javascript">
+const showDevInfo = event => {
+  const getId = event.id;
+
+  const links = document.querySelectorAll('.dev-category button')
+  for (var i = 0; i < links.length; i++) {
+    if(links[i].hasAttribute("class")){
+      links[i].classList.remove('active')
+    }
+  }
+  event.classList.add('active')
+
+  const getCategory = document.querySelector('.category-'+getId)
+  const categories = document.querySelectorAll('div[class ^= "category-"]')
+  for (var i = 0; i < categories.length; i++) {
+    if(categories[i].hasAttribute('class')){
+      categories[i].classList.remove('showCategory')
+      categories[i].classList.add('hideCategory')
+    }
+  }
+
+  getCategory.classList.remove('hideCategory')
+  getCategory.classList.add('showCategory')
+}
+</script>
+{% endblock %}

@@ -1,0 +1,173 @@
+body{
+  background-color: white;
+  scroll-behavior: smooth;
+  scroll-snap-type: mandatory;
+  scroll-snap-points-y: repeat(100vh);
+  scroll-snap-type: y mandatory;
+}
+section{
+  scroll-snap-align: start;
+}
+.welcome-screen{
+  position: relative;
+  height: 100vh;
+  background-image: url("../../../static/Images/welcome-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  align-items: baseline;
+  text-align: center;
+
+}
+.welcome-screen .letters{
+  position: absolute;
+  margin-top: 30vh;
+  left: 0;
+  right: 0;
+  font-size: 8rem;
+  font-family: 'Bungee Outline', cursive;
+  text-shadow: 2px 2px rgb(0,0,255);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-self: center;
+}
+.welcome-screen .letters .know{
+  margin-left: -30px;
+}
+.welcome-screen .letters .for{
+  margin-left: -30px;
+}
+.welcome-screen .getstarted{
+  position: absolute;
+  margin-top: 65vh;
+  left: 0;
+  right: 0;
+}
+.welcome-screen button{
+  font-size: 2rem;
+}
+.welcome-screen .mainK{
+  animation: maink 1s;
+}
+@keyframes maink {
+  0%{
+    opacity: 0;
+  }100%{
+    opacity: 1;
+  }
+}
+.welcome-screen .for{
+  animation: for 2s;
+}
+@keyframes for {
+  0%{
+    opacity: 0;
+  }50%{
+    opacity: 0;
+  }100%{
+    opacity: 1;
+  }
+}
+.welcome-screen .know{
+  animation: Knowledge 3s;
+}
+@keyframes Knowledge {
+  0%{
+    opacity: 0;
+  }67%{
+    opacity: 0;
+  }100%{
+    opacity: 1;
+  }
+}
+
+.info-container{
+  height: 100vh;
+}
+.navarearemover{
+  background-color: black;
+  height: 66px;
+  margin-bottom: 0;
+}
+.card{
+  margin-left: 25%;
+  margin-right: 25%;
+  height: 30vh;
+  margin-top: 8vh;
+  margin-bottom: 5vh;
+  box-shadow: 0 0 2rem rgba(0, 50, 150, .4);
+  border-style: solid;
+  border-radius: 20px;
+  border-width: medium;
+  border-color: rgb(0,50,150)
+}
+.card:nth-child(3){
+  margin-top: 0vh;
+}
+.cardtitle{
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+.card-desc{
+  padding: 10px 10px;
+  text-align: justify;
+  font-size: 1rem;
+}
+.card-imge{
+  position: relative;
+  width: 80%;
+  height: 80%;
+  margin: 10% 10%;
+}
+.explore-button{
+  align-items: center;
+  text-align: center;
+}
+footer a{
+  color: #ddd;
+  text-decoration: none;
+}
+footer .footer-copyright a{
+  color: #fff;
+}
+footer a:hover{
+  color: black;
+}
+footer .footer-title{
+  text-align: center;
+  align-items: center;
+}
+footer .main-title{
+  font-size: 2rem;
+}
+@media screen and (max-width: 985px) {
+  .welcome-screen .letters{
+    font-size: 6rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .welcome-screen .letters{
+    flex-direction: column;
+    margin-top: 5vh;
+    font-size: 4rem;
+    text-shadow: 1px 1px rgb(0,0,255);
+    letter-spacing: 5px;
+    font-weight: bold;
+  }
+  .welcome-screen button{
+    font-size: 1.3rem;
+  }
+  .card{
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 0;
+  }
+  .card-title{
+    font-size: .8rem;
+  }
+  .card-desc{
+    font-size: .7rem;
+  }
+}

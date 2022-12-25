@@ -1,0 +1,49 @@
+{% extends 'layout.html'%}
+{% block content %}
+<script type="text/javascript">
+  //var courses = JSON.parse("{{ infos | escapejs }}")
+</script>
+<link rel="stylesheet" href="static/explore/css/explore.css">
+<div class="container">
+  <div class="serach-area">
+    <form class="search-form" method="post" onsubmit="return false">
+      {% csrf_token%}
+      <input onkeyup="keyuped(this)" type="text" name="searchbox" id="searchbox" class="form-control mr-sm-2" placeholder="start finding your course">
+      <button onclick="searchbuttonclicked()" type="button" name="button" id="searchbutton" class="btn btn-outline-success">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+          <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+        </svg>
+      </button>
+      <button type="button" name="button" id="voicesearchbutton" class="btn btn-outline-success">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-mic-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z"/>
+  <path fill-rule="evenodd" d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+</svg>
+      </button
+    </form>
+  </div>
+
+  <div class="courses">
+  {% for info in infos %}
+      <div class="course {{info.title | cut:" "}}">
+        <a href="/course/{{ info.id }}">
+        <div class="course-title">
+          {{ info.title }}
+        </div>
+        <div class="course-description ">
+          {{ info.description }}
+        </div>
+        <div class="course-tags text-break">
+          <b>Tages:</b> <span class="tags">{{ info.tags }}</span>
+        </div>
+      </a>
+      </div>
+  {% endfor %}
+  </div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="static/explore/js/explore.js"></script>
+{% endblock%}
